@@ -13,7 +13,9 @@ function App() {
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const response = await fetch("http://localhost:5000/api/todos");
+      const response = await fetch(
+        "https://my-todo-backend-2xc0.onrender.com/api/todos"
+      );
       const data = await response.json();
 
       setTodos(data);
@@ -34,11 +36,14 @@ function App() {
 
   const handleAddTodo = async () => {
     try {
-      const response = await fetch("http://localhost:5000/api/todos", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ todo }),
-      });
+      const response = await fetch(
+        "https://my-todo-backend-2xc0.onrender.com/api/todos",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ todo }),
+        }
+      );
       const data = await response.json();
 
       if (response.ok) {
@@ -53,7 +58,7 @@ function App() {
   const handleUpdateTodo = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/api/todos/${editModel._id}`,
+        `https://my-todo-backend-2xc0.onrender.com/api/todos/${editModel._id}`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -73,10 +78,13 @@ function App() {
 
   const handleDeleteTodo = async (id) => {
     try {
-      const response = await fetch(`http://localhost:5000/api/todos/${id}`, {
-        method: "DELETE",
-        headers: { "Content-Type": "appplication/json" },
-      });
+      const response = await fetch(
+        `https://my-todo-backend-2xc0.onrender.com/api/todos/${id}`,
+        {
+          method: "DELETE",
+          headers: { "Content-Type": "appplication/json" },
+        }
+      );
       const data = await response.json();
 
       if (response.ok) {
